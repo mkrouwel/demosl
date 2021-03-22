@@ -1,0 +1,12 @@
+when deposit_paying for [rental] is declared
+assess rightness: the performer of the declaration is the deposit_payer of [rental]
+the addressee of the declaration is the rental_completer of [rental]
+sincerity: *no_specific_condition*
+truth: the declared_ot of deposit_paying for [rental] is within the promised_ot of deposit_paying for [rental]
+the declared_deposit_amount of deposit_paying for [rental] is_equal_to the promised deposit_amount of deposit_paying for [rental]
+if_performing_the_action_after_then_is_considered_justifiable
+then accept deposit_paying for [rental]
+to the performer of the declaration
+else reject deposit_paying for [rental]
+to the performer of the declaration
+with % < explanation of the reason for rejecting > %
