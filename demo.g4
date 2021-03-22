@@ -43,6 +43,8 @@ entity_variable : '[' entity_type_name ']';
 entity_variables : entity_variable+;
 property_variable : 'the' property_type_name (OIO (entity_variable | property_variable | value_variable | attribute_variable))+;
 property_variables : property_variable+;
+property_condition : property_variable ('is' | 'is_not') (property_variable | entity_reference);
+property_conditions : property_condition+;
 
 value_reference : definite_value_reference | indefinite_value_reference | indirect_value_reference;
 definite_value_reference : value_type_name value_name;
@@ -56,6 +58,8 @@ value_variable : '[' value_type_name ']';
 value_variables : value_variable+;
 attribute_variable : 'the' attribute_type_name (OIO (entity_variable | property_variable | value_variable | attribute_variable))+;
 attribute_variables : attribute_variable+;
+attribute_condition : attribute_variable OPERATOR (attribute_variable | definite_value_reference);
+attribute_conditions : attribute_condition+;
 
 tpt_entry : transaction_kind_id transaction_kind_name '|' product_kind_id product_kind_formulation '|' actor_role_id actor_role_name;
 tpt_entries : tpt_entry+;
@@ -67,6 +71,27 @@ product_kind_formulations : product_kind_formulation+;
 bct_entry : ( (transaction_kind_id transaction_kind_name) | (multiple_transaction_kind_id multiple_transaction_bank_name) ) '|' (object_class_name | product_kind_formulation | property_variable | attribute_variable);
 bct_entries : bct_entry+;
 
+action_rules : action_rule+;
+action_rule : event_part assess_part response_part;
+
+event_part : when_clause with_clause? while_clause?;
+when_clause : 'when' c_event_reference;
+c_event_reference : transaction_kind_name 'for' entity_variable 'is' COORDINATION_FACT_NAME;
+with_clause : 'with' ( (property_variable indefinite_entity_reference) | (attribute_variable indefinite_value_reference) )+;
+while_clause : 'while' (transaction_kind_name 'is' COORDINATION_ACT_NAME)+;
+
+assess_part : 'assess' rightness_division sincerity_division truth_division;
+rightness_division : 'rightness:' ( '*no_specific_condition*' | ( property_condition | attribute_condition ) );
+sincerity_division : 'sincerity:' ( '*no_specific_condition*' | ( property_condition | attribute_condition ) );
+truth_division : 'truth:' ( '*no_specific_condition*' | ( property_condition | attribute_condition ) );
+
+response_part : 'if_performing_the_action_after_then_is_considered_justifiable' 'then' for_all_clause? action_clause 'else' for_all_clause? action_clause;
+for_all_clause : 'for_all' entity_variable 'in' entity_variable_set;
+action_clause : (c_act_reference with_clause?)+;
+c_act_reference : COORDINATION_ACT_NAME transaction_kind_name 'for' entity_variable 'to' LOWERCASES;
+entity_variable_set : LOWERCASES;
+
+OPERATOR : 'is_equal_to' | 'is_unequal_to' | 'is_greater_than' | 'is_less_than' | 'is_equal_to_or_greater_than' | 'is_equal_to_or_less_than';
 OIO : 'of' | 'in' | 'on';
 LOWERCASES : [a-z_]+;
 UPPERCASES : [A-Z_]+;
