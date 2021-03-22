@@ -1,0 +1,13 @@
+TK01 membership_starting | MEMBERSHIP
+TK01 membership_starting | [membership] is started
+TK01 membership_starting | the starting_day of [membership]
+TK01 membership_starting | the member of [membership]
+TK01 membership_starting | the amount_to_pay of [membership]
+TK02 membership_paying | the first_fee of [membership] is paid
+TK02 membership_paying | the amount_paid of [membership]
+MTK01 persons_facts | PERSON
+MTK01 persons_facts | the day_of_birth of [person]
+MTK02 Volley_facts | YEAR
+MTK02 Volley_facts | the minimal_age in [year]
+MTK02 Volley_facts | the annual_fee in [year]
+MTK02 Volley_facts | the max_members in [year]

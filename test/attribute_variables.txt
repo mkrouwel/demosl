@@ -1,0 +1,4 @@
+the age of [person]
+the daily_rental_rate of [car_group] in [year]
+the deposit_amount of some rental on the day '2458270'
+the penalty of some loan on the ending_day of rental '1089'

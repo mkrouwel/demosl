@@ -1,0 +1,3 @@
+the weight of car '387462'
+the weight of the car of rental '1089'
+the daily_rental_rate of car_group 'sedan' in the year '2'

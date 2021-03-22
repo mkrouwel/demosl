@@ -1,0 +1,5 @@
+TK01 rental_completing | PK01 [rental] is completed | AR01 rental_completer
+TK02 car_taking | PK02 the car of [rental] is taken | AR02 car_taker
+TK03 car_returning | PK03 the car of [rental] is returned | AR03 car_returner
+TK04 deposit_paying | PK04 the deposit of [rental] is paid | AR04 deposit_payer
+TK05 invoice_paying | PK05 the invoice of [rental] is paid | AR05 invoice_payer

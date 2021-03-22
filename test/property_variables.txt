@@ -1,0 +1,4 @@
+the renter of [rental]
+the father of the renter of [rental]
+the renter of some rental on the day '2458270'
+the book of some loan on the ending_day of rental '12'

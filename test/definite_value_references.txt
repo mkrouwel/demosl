@@ -1,0 +1,3 @@
+number '1089'
+day '2458270'
+car_group 'sedan'

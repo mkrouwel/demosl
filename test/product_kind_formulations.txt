@@ -1,0 +1,3 @@
+[rental] is contracted
+the car of [rental] is returned
+the fee of [membership] in [year] is paid
