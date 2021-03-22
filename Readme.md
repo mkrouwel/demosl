@@ -1,4 +1,4 @@
-# The largest heading
+# DEMO-SL parser
 Antlr based DEMO-SL parser, including samples and a script for checking the samples against DEMO-SL
 
 ## Prerequisites
@@ -15,7 +15,7 @@ java -cp "%CLASSPATH%;." org.antlr.v4.gui.TestRig %*
 - check.bat is a very convenient script taking up to 2 parameters, that can check a sample set against DEMO-SL. This script can be re-run with new or adapted sample sets, without having to rebuild the parser.
   1. name of the sample to check, if left empty all (\*) samples will be checked.
   2. -gui to show the parse tree visually, only applicable if 1st parameter is used. If left empty -tree will be passed on, thus showing the output in the command line. The latter is the default if multiple samples are being checked.
-- test directory: contains sample sets that can be checked against DEMO-SL. The file name contains the rule to check
+- test directory: contains sample sets that can be checked against DEMO-SL. The file name equals the rule to check
 
 ### Examples
 `run` will completely build and compile the parser and check all present samples
@@ -29,6 +29,8 @@ java -cp "%CLASSPATH%;." org.antlr.v4.gui.TestRig %*
 `check bct_entries` will check only the bct_entries sample (without rebuilding the parser)
 
 `check bct_entries -gui` will check only the bct_entries sample and show the output as a picture (without rebuilding the parser)
+
+![Visualization of parse results on sample set indirect_entity_references](antlr4_parse_tree_example.png?raw=true "Title")
 
 ## Known issues
 - attribute_variable and property_variable rules are not defined properly in DEMO-SL, need to be fixed in a later version
